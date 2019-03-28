@@ -22,7 +22,7 @@ public class BallSpawner2 : MonoBehaviour
 
         if (ShooterBall.activeSelf)
         {
-            Quaternion rotation = Quaternion.LookRotation(relativePos);
+            Quaternion rotation = Quaternion.LookRotation(relativePos + new Vector3(0, 0.5f, 0));
             transform.rotation = rotation;
         }
         if (isBallSpawningAllowed)

@@ -18,11 +18,15 @@ public class PickupScript : MonoBehaviour
         
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Pickup Triggered");
-        GunFloor.SetActive(false);
-        GunInHand.SetActive(true);
-        FirstPersonController.GetComponent<Shoot>().enabled = true;
-        FirstPersonController.GetComponent<AudioSource>().enabled = true;
-        BallSpawner.SetActive(true);
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            Debug.Log("Pickup Triggered");
+            GunFloor.SetActive(false);
+            GunInHand.SetActive(true);
+            FirstPersonController.GetComponent<Shoot>().enabled = true;
+            FirstPersonController.GetComponent<AudioSource>().enabled = true;
+            BallSpawner.SetActive(true);
+        }
+        
     }
 }

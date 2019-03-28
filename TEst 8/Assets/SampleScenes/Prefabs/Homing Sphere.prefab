@@ -146,12 +146,12 @@ PrefabInstance:
     - target: {fileID: 2029471986866450950, guid: 720f9e04df90fac4cbe1dfc63c4aa029,
         type: 3}
       propertyPath: maxValueY
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2029471986866450950, guid: 720f9e04df90fac4cbe1dfc63c4aa029,
         type: 3}
       propertyPath: minValueY
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1255297352252477990, guid: 720f9e04df90fac4cbe1dfc63c4aa029,
         type: 3}
@@ -232,6 +232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TimeOut
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255297352252050948, guid: 720f9e04df90fac4cbe1dfc63c4aa029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1255297353152358304, guid: 720f9e04df90fac4cbe1dfc63c4aa029,
         type: 3}

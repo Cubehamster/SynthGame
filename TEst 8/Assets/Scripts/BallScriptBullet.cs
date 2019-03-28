@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallScript : MonoBehaviour
+public class BallScriptBullet : MonoBehaviour
 {
     public GameObject destructablesphere;
     public GameObject normalSphere;
@@ -21,11 +21,12 @@ public class BallScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision");
-        if (collision.gameObject.tag.Equals("bullet") || collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("bullet") || collision.gameObject.tag.Equals("Player") || collision.gameObject.tag.Equals("ground") || collision.gameObject.tag.Equals("junk"))
         {
             destructablesphere.SetActive(true);
             spinSphere.velocity = rigidbody.velocity;
-            normalSphere.SetActive(false);
+            normalSphere.GetComponent<MeshRenderer>().enabled = false;
+            //normalSphere.SetActive(false);
             rigidbody.isKinematic = true;
             trail.SetActive(false);
         }

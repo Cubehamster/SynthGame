@@ -18,7 +18,7 @@ public class HomingScript : MonoBehaviour
     public int minForwardSpeed;
     public int maxRightSpeed;
     public int minRightSpeed;
-
+    private Vector3 flipVector;
 
     private void Awake()
     {
@@ -29,8 +29,18 @@ public class HomingScript : MonoBehaviour
         speedForward = Random.Range(minForwardSpeed, maxForwardSpeed + 1);
         speedRight = Random.Range(minRightSpeed, maxRightSpeed + 1);
     }
+
+    private void OnCollisionEnter(Collision flip)
+    {
+        Debug.Log("Collision");
+        if (flip.gameObject.tag.Equals("ground"))
+        {
+            flipVector = new Vector3(-1, 1, -1);
+            randomAngle = Vector3.Scale(randomAngle, flipVector);
+        }
+    }
     // Update is called once per frame
-        void Update()
+    void Update()
     {
         //transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
 
@@ -41,9 +51,14 @@ public class HomingScript : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(relativePos, randomAngle);
             transform.rotation = rotation;
         }
-
+        
+        
         float dist = Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position);
-        ball.GetComponent<Rigidbody>().velocity = (ball.transform.forward * speedForward) + (ball.transform.right * (speedRight*dist/100) * randomDirection);
+        ball.GetComponent<Rigidbody>().velocity = (ball.transform.forward * speedForward) + (ball.transform.right * (speedRight*(dist+10)/100) * randomDirection);
         //ball.GetComponent<Rigidbody>().velocity = ball.transform.forward * speed;
+
+
     }
+
+ 
 }
